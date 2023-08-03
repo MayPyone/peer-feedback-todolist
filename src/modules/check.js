@@ -2,7 +2,7 @@ import {
   create,
 } from './input.js';
 
-export function complete(che, num) {
+export function edit(che, num) {
   const totaltasks = create();
   if (che.checked === true) {
     totaltasks[num].completed = true;
@@ -30,7 +30,7 @@ export const check = () => {
     const num = Number(button.id);
     const che = document.querySelector(`.checkbox${num}`);
     if (e.target.tagName === 'INPUT') {
-      complete(che, num);
+      edit(che, num);
       completecheck(che, num);
     }
   });
