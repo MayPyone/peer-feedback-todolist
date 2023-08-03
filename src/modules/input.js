@@ -5,7 +5,7 @@ export const create = () => {
   return JSON.parse(localStorage.getItem('lists'));
 };
 
-export const add=(title) =>{
+export const add = (title) => {
   const totaltasks = create();
   const l = totaltasks.length;
   const task = {
@@ -15,7 +15,7 @@ export const add=(title) =>{
   };
   totaltasks.push(task);
   localStorage.setItem('lists', JSON.stringify(totaltasks));
-}
+};
 const input = document.querySelector('.main');
 export const mydata = () => {
   input.addEventListener('keypress', (e) => {
@@ -76,7 +76,7 @@ export const clear = () => {
   });
 };
 
-export function edit(num, editdescripiton) {
+export function update(num, editdescripiton) {
   const totaltasks = create();
   totaltasks[num].description = editdescripiton;
   localStorage.setItem('lists', JSON.stringify(totaltasks));
@@ -100,7 +100,7 @@ export const deleteData = () => {
         input.addEventListener('keypress', (e) => {
           const editdescripiton = users.value;
           if (e.key === 'Enter') {
-            edit(num, editdescripiton);
+            update(num, editdescripiton);
           }
         });
       }
