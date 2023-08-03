@@ -5,7 +5,7 @@ export const create = () => {
   return JSON.parse(localStorage.getItem('lists'));
 };
 
-export function add(title) {
+export const add=(title) =>{
   const totaltasks = create();
   const l = totaltasks.length;
   const task = {
