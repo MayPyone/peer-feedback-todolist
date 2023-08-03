@@ -1,5 +1,7 @@
 import 'jest-localstorage-mock';
-import { update, add, create } from './input.js';
+import {
+  update, add, create, clearAll,
+} from './input.js';
 
 import { editcomplete } from './check.js';
 
@@ -67,5 +69,27 @@ describe('Updating data', () => {
     expect(data[1].description).toBe('clean the room');
     expect(data[0].description).toBe('do homework');
     expect(data[2].description).toBe('do exercise');
+  });
+});
+
+describe('Clear all data', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  test('update one data', () => {
+    add('task1');
+    add('task2');
+    add('task3');
+    update(1, 'clean the room');
+    editcomplete(true, 0);
+    editcomplete(true, 2);
+    clearAll();
+    const data = JSON.parse(localStorage.getItem('lists'));
+    expect(data[0].description).toBe('clean the room');
   });
 });
