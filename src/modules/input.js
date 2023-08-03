@@ -5,7 +5,7 @@ export const create = () => {
   return JSON.parse(localStorage.getItem('lists'));
 };
 
-export const add=(title) =>{
+export const add = (title) => {
   const totaltasks = create();
   const l = totaltasks.length;
   const task = {
@@ -15,7 +15,7 @@ export const add=(title) =>{
   };
   totaltasks.push(task);
   localStorage.setItem('lists', JSON.stringify(totaltasks));
-}
+};
 const input = document.querySelector('.main');
 export const mydata = () => {
   input.addEventListener('keypress', (e) => {
